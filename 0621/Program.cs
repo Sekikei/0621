@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _0621
 {
@@ -6,15 +7,18 @@ namespace _0621
     {
         static void Main(string[] args)
         {
-           char a= char.Parse(Console.ReadLine());
-            if (char.IsLower(a))
+            int[] i_ary = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+            int num = i_ary[0];
+            int buy = i_ary[1];
+
+            List<int> item_list = new List<int>(Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse));
+            item_list.Sort();
+            int ans = 0;
+            for(int i=0;i<buy;i++)
             {
-                Console.WriteLine("a");
+                ans = ans + item_list[i];
             }
-            else
-            {
-                Console.WriteLine("A");
-            }
+            Console.WriteLine(ans);
         }
     }
 }
