@@ -7,16 +7,17 @@ namespace _0621
     {
         static void Main(string[] args)
         {
-            int[] i_ary = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-            int num = i_ary[0];
-            int buy = i_ary[1];
+          //  int[] i_ary = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+            string[]array=Console.ReadLine().Split(' ');
+            int num = int.Parse(array[0]);
+            int buy = int.Parse(array[1]);
 
-            List<int> item_list = new List<int>(Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse));
+            List<string> item_list = new List<string>(Console.ReadLine().Split(' '));
             item_list.Sort();
             int ans = 0;
             for(int i=0;i<buy;i++)
             {
-                ans = ans + item_list[i];
+                ans = ans + int.Parse(item_list[i]);
             }
             Console.WriteLine(ans);
         }
