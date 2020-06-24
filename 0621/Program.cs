@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace _0621
 {
@@ -7,19 +9,28 @@ namespace _0621
     {
         static void Main(string[] args)
         {
-          //  int[] i_ary = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-            string[]array=Console.ReadLine().Split(' ');
-            int num = int.Parse(array[0]);
-            int buy = int.Parse(array[1]);
-
-            List<string> item_list = new List<string>(Console.ReadLine().Split(' '));
-            item_list.Sort();
-            int ans = 0;
-            for(int i=0;i<buy;i++)
+            long n = long.Parse(Console.ReadLine());
+            long p = 1;
+            int keta = 1;
+            while (p * 26 < n)
             {
-                ans = ans + int.Parse(item_list[i]);
+                p *= 26;
+                n -= p;
+                keta++;
             }
+            n--;
+
+            var a = new char[keta];
+            for (int i = keta - 1; i >= 0; i--)
+            {
+                a[i] = 'a';
+                if (n == 0) continue;
+                a[i] += (char)(n % 26);
+                n /= 26;
+            }
+            var ans = new string(a);
             Console.WriteLine(ans);
+
         }
     }
 }
